@@ -6,7 +6,11 @@
  *
  * Requires: rgbcolor.js - http://www.phpied.com/rgb-color-parser-in-javascript/
  */
-(function(){
+
+
+RGBColor = require('./rgbcolor');
+
+
 	// canvg(target, s)
 	// empty parameters: replace all 'svg' elements on page with 'canvas' elements
 	// target: canvas element or the id of a canvas element
@@ -22,7 +26,7 @@
 	//		 scaleHeight: int => scales vertically to height
 	//		 renderCallback: function => will call the function after the first render is completed
 	//		 forceRedraw: function => will call the function on every frame, if it returns true, will redraw
-	this.canvg = function (target, s, opts) {
+	canvg = function (target, s, opts) {
 		// no parameters
 		if (target == null && s == null && opts == null) {
 			var svgTags = document.querySelectorAll('svg');
@@ -820,7 +824,7 @@
 				child.parent = this;
 				if (child.type != 'title') { this.children.push(child);	}
 			}
-			
+
 			this.addStylesFromStyleDefinition = function () {
 				// add styles
 				for (var selector in svg.Styles) {
@@ -849,7 +853,7 @@
 					var attribute = node.attributes[i];
 					this.attributes[attribute.nodeName] = new svg.Property(attribute.nodeName, attribute.value);
 				}
-				
+
 				this.addStylesFromStyleDefinition();
 
 				// add inline styles
@@ -2996,7 +3000,7 @@
 
 		return svg;
 	}
-})();
+
 
 if (typeof(CanvasRenderingContext2D) != 'undefined') {
 	CanvasRenderingContext2D.prototype.drawSvg = function(s, dx, dy, dw, dh) {
@@ -3012,3 +3016,5 @@ if (typeof(CanvasRenderingContext2D) != 'undefined') {
 		});
 	}
 }
+
+module.exports = canvg

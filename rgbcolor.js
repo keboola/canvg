@@ -4,7 +4,7 @@
  * @link   http://www.phpied.com/rgb-color-parser-in-javascript/
  * @license Use it if you like it
  */
-function RGBColor(color_string)
+module.exports = function RGBColor(color_string)
 {
     this.ok = false;
 
@@ -285,4 +285,3 @@ function RGBColor(color_string)
     }
 
 }
-
